@@ -11,7 +11,7 @@ jobs:
     - name: Generate Output step
       id: step1
       run: |
-        echo "step1_output="Output1 from step1" >> $GITHUB_OUTPUT
+        echo "step1_output=Output1 from step1" >> $GITHUB_OUTPUT
   job2:
     runs-on: ubuntu-latest
     needs: [job1]
