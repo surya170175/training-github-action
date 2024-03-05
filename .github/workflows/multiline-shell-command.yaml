@@ -1,0 +1,15 @@
+# This workflow represents the examples of multiline shell command (use "|" for multiline shell command
+name: multiline shell command
+on: workflow_dispatch
+jobs:
+  demo-multiline-shell-command:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Executing multiline commands
+      run: |
+        echo "------show present working directory------"
+        pwd
+        echo "------list the files------"
+        ls -ltr
+        echo "------print the some message------"
+        echo "This is a test message"
