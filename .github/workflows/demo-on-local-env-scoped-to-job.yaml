@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Print Env 1 declared at this job
       run: |
-        echo "Env 1 value using env keyword:- ${{ env.ENV1_JOB1 }}
+        echo "Env 1 value using env keyword:- ${{ env.ENV1_JOB1 }}"
         echo "Env 2 value printed like a local var:- $ENV2_JOB1"
   env-scoped-at-job2:
     runs-on: ubuntu-latest
