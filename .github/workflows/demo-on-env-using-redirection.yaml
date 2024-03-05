@@ -8,7 +8,7 @@ jobs:
     - name: create env in this step i.e. step1
       id: step1
       run: |
-        echo "ENV1_STEP1="ENV1 for job ${{ github.job }} in step1" >> $GITHUB_ENV
+        echo "ENV1_STEP1='ENV1 for job ${{ github.job }}' in step1" >> $GITHUB_ENV
     - name: Access and print env created in previous step using redirection
       run: |
         echo "The value of Env 1 created in previous step:-$ENV1_STEP1"
