@@ -4,20 +4,27 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: This will accept the name from user at runtime and is a mandatory field
+        description: Please Enter your Name
         required: true
       location:
-        description: This will accept the location from user at runtime and is mandatory field
+        description: Please Enter Your Location
         required: true
       company:
-        description: This will accept the company name user works in
+        description: Please Enter Company you Worked in
         required: true
+      gender:
+        description: Please select the Gender
+        type: choice
+        options:
+          - Male
+          - Female
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
     - name: print the user inputs
       run: |
-        echo "User Name     :- ${{ inputs.name }}"
-        echo "User Location :- ${{ inputs.location }}"
-        echo "User Company  :- ${{ inputs.company }}"
+        echo "User Name      :- ${{ inputs.name }}"
+        echo "User Location  :- ${{ inputs.location }}"
+        echo "User Company   :- ${{ inputs.company }}"
+        echo "User Gender is :- ${{ inputs.gender }}"
