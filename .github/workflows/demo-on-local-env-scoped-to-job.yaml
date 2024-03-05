@@ -1,0 +1,29 @@
+# This example demo the env scoped to job
+name: local env scoped at job level
+on: workflow_dispatch
+jobs:
+  env-scoped-at-job1:
+    runs-on: ubuntu-latest
+    env:
+      ENV1_JOB1: "This is the Env Var1 accessible in this job only i.e job env-scoped-at-job1" 
+      ENV2_JOB1: "This is the Env Var2 accessible in this job only i.e job env-scoped-at-job1"
+    steps:
+    - name: Print Env 1 declared at this job
+      run: |
+        echo "Env 1 value using env keyword:- ${{ env.ENV1_JOB1 }}
+        echo "Env 2 value printed like a local var:- $ENV2_JOB1"
+  env-scoped-at-job2:
+    runs-on: ubuntu-latest
+    env:
+      ENV1_JOB2: "This the Env Var1 accessible in this job only i.e job env-scoped-at-job2"
+      ENV2_JOB2: "This the Env Var2 accessible in this job only i.e job env-scoped-at-job2"
+    steps:
+    - name: Print Env defined in previous job
+      run: | 
+        # Below echo statement will not be able to access the ENVs declared in Previous Job because those were scoped in Previous Job only
+        echo "Env 1 value declared and assigned in Previous Job:- ${{ env.ENV1_JOB1 }}
+        echo "Env 2 Value declared and assigned in Previous Job:- ${{ env.ENV2_JOB1 }} 
+    - name: Print Env defined in this job
+      run: |
+        echo "Env 1 value declared and assigned in this job:- $ENV1_JOB2"
+        echo "Env 2 value declared and assigned in this job:- $ENV2_JOB2"
