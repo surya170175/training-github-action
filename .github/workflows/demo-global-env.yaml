@@ -1,0 +1,17 @@
+# This workflow represents the examples on env scoped at global level i.e. can be accessed from any jobs in this workflow
+name: global env demo
+on: workflow_dispatch
+env:
+  GLOBAL_ENV_1: "Environment Variable 1" # This one is accessible from any job
+  GLOBAL_ENV_2: "Envrironment Variable 2" # This one is accessible from any job
+jobs:
+  demo-on-env-global-job-1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print the Global Env 1 value
+      run: echo  "Value assigned in GLOBAL_ENV_1:- ${{ env.GLOBAL_ENV_1 }}"
+  demo-on-env-global-job-2:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print the Global Env 2 value
+      run: echo  "Value assigned in GLOBAL_ENV_2:- ${{ env.GLOBAL_ENV_2 }}"
