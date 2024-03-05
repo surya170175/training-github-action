@@ -1,0 +1,9 @@
+# This is the Simple workflow which will execute single line shell command
+name: my first workflow
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print Welcome Message
+      run: echo "Welcome to the Github Action Learning.!"
