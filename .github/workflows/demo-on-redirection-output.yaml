@@ -1,0 +1,14 @@
+# This example will demo redirection of output i.e. $GITHUB_OUTPUT
+name: demo on redirection output to "$GITHUB_OUTPUT"
+on: workflow_dispatch
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Redirect output to "$GITHUB_OUTPUT"
+      id: step1
+      run:
+        echo "name=John Demelo" >> $GITHUB_OUTPUT
+        echo "Key Value redirected to GITHUB_OUTPUT will be accessible in this job in any step using steps.step_id.outputs.key"
+    - name: Print value of Key from GITHUB_OUTPUT redirected in step 1
+      run: echo "This value of key 'name' is:- ${{ steps.step1.outputs.name }}
