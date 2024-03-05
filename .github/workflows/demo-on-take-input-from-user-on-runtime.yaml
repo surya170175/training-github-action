@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       name:
-      description: This will accept the name from user at runtime and is a mandatory field
-      required: true
-    location:
-     description: This will accept the location from user at runtime and is mandatory field
-     required: true
-    company:
-      description: This will accept the company name user works in
-      required: true
+        description: This will accept the name from user at runtime and is a mandatory field
+        required: true
+      location:
+        description: This will accept the location from user at runtime and is mandatory field
+        required: true
+      company:
+        description: This will accept the company name user works in
+        required: true
 jobs:
   job1:
     runs-on: ubuntu-latest
