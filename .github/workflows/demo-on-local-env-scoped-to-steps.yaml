@@ -1,0 +1,20 @@
+# This Example will demo the Env defined at steps and scoped to respective step only
+name: Env at Steps level
+on: workflow_dispatch
+jobs:
+ job1:
+   runs-on: ubuntu-latest
+   steps:
+   - name: print env defined in this step1 ${{ github.job }} ##Github context used here to extract the job name
+     id: step1
+     env: 
+       ENV1_STEP1: "This is Env 1 for step1 of job ${{ github.job }}"
+       ENV2_STEP1: "This is Env 2 for step1 of job ${{ github.job }}"
+     run: |
+       echo "Value of Env1 of step1 job ${{ github.job }}:- $ENV1_STEP1"
+       echo "Value of Env2 of step1 job ${{ github.job }}:- $ENV2_STEP1"
+   - name: print env defined in previous step i.e. step1
+     run: |
+       echo "In Below echo env value will not be printed as that was local to step1"
+       echo "Value of Env1 of step1 job ${{ github.job }}:- $ENV1_STEP1"
+       
