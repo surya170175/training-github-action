@@ -1,0 +1,23 @@
+# This Example will demo how to take the input from user at runtime and use it in our workflow for evaluation
+name: Demo on User Input
+on: 
+  workflow_dispatch:
+    inputs:
+      name:
+      description: This will accept the name from user at runtime and is a mandatory field
+      required: true
+    location:
+     description: This will accept the location from user at runtime and is mandatory field
+     required: true
+    company:
+      description: This will accept the company name user works in
+      required: true
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print the user inputs
+      run: |
+        echo "User Name     :- ${{ inputs.name }}"
+        echo "User Location :- ${{ inputs.location }}"
+        echo "User Company  :- ${{ inputs.company }}"
