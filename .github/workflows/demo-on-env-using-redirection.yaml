@@ -1,0 +1,17 @@
+# This example will demo the creation of env var at run time using redirection method
+name: Demo on env using redirection
+on: workflow_dispatch
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: create env in this step i.e. step1
+      id: step1
+      run: |
+        echo "ENV1_STEP1="ENV1 for job ${{ github.job }} in step1" >> $GITHUB_ENV
+    - name: Access and print env created in previous step using redirection
+      run: |
+        echo "The value of Env 1 created in previous step:-$ENV1_STEP1"
+        echo "Env created using redirection method is local to that job level so it is accessible in the scope of this job i.e. in any step"
+    - name: Another step of job ${{ github.job }}
+      run: echo "Printing env value created in step1 using redirection:- $ENV1_STEP1"
